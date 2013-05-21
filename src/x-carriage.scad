@@ -39,10 +39,10 @@ module x_carriage_holes(){
  // Long bearing holder holes cutter
  translate([-33/2,45,0]) rotate([0,0,90]) horizontal_bearing_holes(2);
   // Extruder mounting holes
-  translate([-16.5+10,24,-1])cylinder(r=1.7, h=20, $fn=8);
-  translate([-16.5+10,24,10])cylinder(r=3.1, h=20, $fn=6); 
-  translate([-16.5-10,24,-1])cylinder(r=1.7, h=20, $fn=8);
-  translate([-16.5-10,24,10])cylinder(r=3.1, h=20, $fn=6); 	
+  translate([-16.5+12,24,-1])cylinder(r=1.7, h=20, $fn=8);
+  translate([-16.5+12,24,10])cylinder(r=3.1, h=20, $fn=6);
+  translate([-16.5-12,24,-1])cylinder(r=1.7, h=20, $fn=8);
+  translate([-16.5-12,24,10])cylinder(r=3.1, h=20, $fn=6);
 }
 
 module x_carriage_fancy(){
@@ -53,7 +53,7 @@ module x_carriage_fancy(){
  // Bottom ĺeft corner
  translate([-33,5,0]) translate([0,-11.5,-1]) rotate([0,0,-135]) translate([0,-15,0]) cube([30,30,20]);
  // Top left corner
- translate([-33-13.5,-5,0]) translate([0,45+11.5,-1]) rotate([0,0,135]) translate([0,-15,0]) cube([30,30,20]);	
+ translate([-33-13.5,-5,0]) translate([0,45+11.5,-1]) rotate([0,0,135]) translate([0,-15,0]) cube([30,30,20]);
 }
 
 // Final part
