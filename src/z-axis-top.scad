@@ -22,7 +22,7 @@ module z_top_fancy() {
   translate([0,0,5]) rotate([45+180,0,0]) rotate([0,0,-45+90]) translate([0,0,-15]) cube([30,30,30]);
 
   // Stiffner cut out
-  translate([30,0,6]) rotate([0,-45,0]) translate([0,-5,0]) cube([30,50,30]);
+  translate([30,0,5.5+1]) rotate([0,-45,0]) translate([0,-5,0]) cube([30,50,30]);
 }
 
 module z_top_holes() {
