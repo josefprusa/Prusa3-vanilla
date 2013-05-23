@@ -5,6 +5,7 @@
 // http://www.reprap.org/wiki/Prusa_Mendel
 // http://prusamendel.org
 
+include <inc/configuration.scad>
 use <inc/bearing.scad>
 
 module x_carriage_base(){
@@ -15,21 +16,22 @@ module x_carriage_base(){
  // Base plate
  translate([-33,-11.5,0]) cube([33,68,7]);
  // Belt holder base
- translate([-33,20,0]) cube([33,16,17]);
+ translate([-33,19,0]) cube([33,16,17]);
 }
 
 module x_carriage_beltcut(){
+ position_tweak = belt_tooth_distance/2;
  // Cut in the middle for belt
- translate([-2.5-16.5+1,19,7]) cube([4.5,13,15]);
+ translate([-2.5-16.25+position_tweak,18,7]) cube([4.5,13,15]);
  // Cut clearing space for the belt
  translate([-38,5,7]) cube([40,13,15]);
  // Belt slit
- translate([-66,21.5+10,6]) cube([67,1,15]);
+ translate([-66,21.5+9,6]) cube([67,1,15]);
  // Smooth entrance
- translate([-66,21.5+10,14]) rotate([45,0,0]) cube([67,15,15]);
+ translate([-66,21.5+9,14]) rotate([45,0,0]) cube([67,15,15]);
  // Teeth cuts
  for ( i = [0 : 23] ){
-  translate([0-i*3,21.5+8,6]) cube([1.7,3,15]);
+  translate([0-i*belt_tooth_distance+position_tweak,21.5+7,7]) cube([1.7,3,15]);
  }
 }
 
@@ -39,10 +41,10 @@ module x_carriage_holes(){
  // Long bearing holder holes cutter
  translate([-33/2,45,0]) rotate([0,0,90]) horizontal_bearing_holes(2);
   // Extruder mounting holes
-  translate([-16.5+12,24,-1])cylinder(r=1.7, h=20, $fn=8);
-  translate([-16.5+12,24,10])cylinder(r=3.1, h=20, $fn=6);
-  translate([-16.5-12,24,-1])cylinder(r=1.7, h=20, $fn=8);
-  translate([-16.5-12,24,10])cylinder(r=3.1, h=20, $fn=6);
+  translate([-16.5+12,23.5,-1])cylinder(r=1.7, h=20, $fn=10);
+  translate([-16.5+12,23.5,10])cylinder(r=3.1, h=20, $fn=6);
+  translate([-16.5-12,23.5,-1])cylinder(r=1.7, h=20, $fn=10);
+  translate([-16.5-12,23.5,10])cylinder(r=3.1, h=20, $fn=6);
 }
 
 module x_carriage_fancy(){
