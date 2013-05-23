@@ -2,8 +2,23 @@ This is Prusa iteration 3
 Published under GPL v3
 
 To start:
-Copy configuration.scad.dist to configuration.scad and fill custom
-settings section there
+You can configure belt teeths in x-carriage and y-belt-holder by changing `belt_tooth_distance` parameter and by adjusting `position_tweak`.
+
+Then, simply type `make` to compile your own STL files.
 
 Aim for 0.3mm layers and 2.2 extrusion width (width over thickness),
 for 0.66mm stroke width. Printer is tested at this setting.
+
+Also testing at 1.4 extrusion width for T2.5 belt configuration.
+
+== Notes about the fork ==
+
+This fork is intended for to maintain a more normalized version of the original «vanilla». This means:
+
+* Only M3x10mm and M3x20mm screws to mount the complete printer and 2 M3x30mm to add the extruder to x-carriage.
+
+* Fix some different sizes in similar parts
+
+* TODO: Extruder modification to be 608 & hobbed bolt compatible
+
+* ...
