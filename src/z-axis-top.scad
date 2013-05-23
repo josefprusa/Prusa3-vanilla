@@ -27,13 +27,13 @@ module z_top_fancy(){
 
 module z_top_holes(){
  // Screw holes
- translate([-1,10,10]) rotate([0,90,0]) cylinder(h = 20, r=1.8, $fn=30);
- translate([-1,10+20,10]) rotate([0,90,0]) cylinder(h = 20, r=1.8, $fn=30);
+ translate([-1,10,10]) rotate([0,90,0]) cylinder(h = 20, r=1.7, $fn=10);
+ translate([-1,10+20,10]) rotate([0,90,0]) cylinder(h = 20, r=1.7, $fn=10);
 
  // Screw heads
- translate([4,10,10]) rotate([0,90,0]) cylinder(h = 20, r=3.1, $fn=30);
+ translate([4,10,10]) rotate([0,90,0]) cylinder(h = 20, r=3.1, $fn=15);
  translate([4,10-3.1,10]) cube([10,6.2,10]);
- translate([4,10+20,10]) rotate([0,90,0]) cylinder(h = 20, r=3.1, $fn=30);
+ translate([4,10+20,10]) rotate([0,90,0]) cylinder(h = 20, r=3.1, $fn=15);
  translate([4,10+20-3.1,10]) cube([10,6.2,10]);
 
  // Z rod holder
