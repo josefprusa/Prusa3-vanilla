@@ -6,7 +6,7 @@
 // http://prusamendel.org
 
 
-include <external_gear_script.scad>;
+include <inc/external_gear_script.scad>;
 
 module small_gear()
 {
@@ -19,7 +19,7 @@ module small_gear()
 			circular_pitch=335,rim_thickness=20,bore_diameter=0,hub_thickness=0);
 
 
-			difference(){ 
+			difference(){
 				translate ([0,0,-1]) cylinder(r=5/2, h=25, $fn=30);
 				translate ([-5,1.5,0])cube([10,10,30]);
 			}

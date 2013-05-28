@@ -6,7 +6,7 @@
 // http://prusamendel.org
 
 
-include <external_gear_script.scad>;
+include <inc/external_gear_script.scad>;
 
 module big_gear()
 {
