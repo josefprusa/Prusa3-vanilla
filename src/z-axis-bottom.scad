@@ -61,7 +61,7 @@ module z_bottom_holder() {
     z_bottom_fancy();
     z_bottom_holes();
   }
-  translate([0,-13,0]) mirror([0,1,0]) difference() {
+  translate([-3,0,0]) mirror([1,0,0]) difference() {
     z_bottom_base();
     z_bottom_fancy();
     z_bottom_holes();
