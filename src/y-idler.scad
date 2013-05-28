@@ -16,7 +16,7 @@ module y_idler_base() {
 module y_idler_holes() {
   translate(v = [0,0,-1]) cylinder(h = 120, r = 1.7, $fn = 10);
   translate(v = [0,0,-1]) cylinder(h = 2, r = 3.1, $fn = 15);
-  translate(v = [0,0,16]) rotate([0,0,30]) cylinder(h = 2, r = 3.3, $fn = 6);
+  translate(v = [0,0,15]) rotate([0,0,30]) cylinder(h = 3, r = 3.3, $fn = 6);
   translate(v = [0,20,-1]) cylinder(h = 25, r = 4.5);
   translate(v = [0,0,3.5]) cylinder(h = 10, r = 12);
 }
