@@ -14,8 +14,8 @@ module mount_holes() {
   // Mount holes
   // extruder
   translate(v = [-25, 0, -1]) cylinder(r = 1.8, h = 9, $fn = 10);
-  translate(v = [15, 0, 4.5]) cylinder(r = 1.8, h = 9, $fn = 10);
-  translate(v = [15, 0, -1]) cylinder(r = 3.3, h = 4, $fn = 15);
+  translate(v = [15, 0, 5]) cylinder(r = 1.8, h = 9, $fn = 10);
+  translate(v = [15, 0, -1]) cylinder(r = 3.3, h = 5.5, $fn = 15);
   // plate
   translate(v = [25, 0, -1]) cylinder(r = 1.8, h = 9, $fn = 10);
   translate(v = [25,0,4]) cylinder(r = 3.3, h = 4, $fn = 6);
