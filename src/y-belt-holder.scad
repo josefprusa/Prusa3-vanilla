@@ -13,7 +13,7 @@ module belt_holder_base() {
 
 module belt_holder_beltcut() {
   belt_tooth_distance = 2.5;
-  position_tweak = belt_tooth_distance/2+.2;
+  position_tweak = 1.85; //GT2 0.5
 
   // Belt slit
   translate([-66,-0.5+10,3]) cube([67,1,15]);
@@ -23,7 +23,7 @@ module belt_holder_beltcut() {
 
   // Individual teeth
   for (i = [0 : 23]) {
-    translate([0-i*belt_tooth_distance+position_tweak,-0.5+8,3]) cube([1.7,3,15]);
+    translate([0-i*belt_tooth_distance+position_tweak,-0.5+8,3]) cube([belt_tooth_distance/2,3,15]);
   }
 
   // Middle opening
