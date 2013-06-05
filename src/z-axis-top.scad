@@ -8,7 +8,7 @@
 module z_top_base() {
   translate([0,-5,0]) cube([8,45,16]); // plate touching the base
   translate([0,-5,0]) cube([30,5.01,12]); // plate touching the base
-  translate([0,-5,0]) cube([38,15,5+1]); // plate touching the base
+  translate([0,-5,0]) cube([38,15,5]); // plate touching the base
 }
 
 module z_top_fancy() {
@@ -22,7 +22,7 @@ module z_top_fancy() {
   translate([0,0,5]) rotate([45+180,0,0]) rotate([0,0,-45+90]) translate([0,0,-15]) cube([30,30,30]);
 
   // Stiffner cut out
-  translate([30,0,5.5+1]) rotate([0,-45,0]) translate([0,-5,0]) cube([30,50,30]);
+  translate([30,0,5.5]) rotate([0,-45,0]) translate([0,-5,0]) cube([30,50,30]);
 }
 
 module z_top_holes() {
