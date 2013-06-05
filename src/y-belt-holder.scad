@@ -14,9 +14,10 @@ module belt_holder_base() {
 module belt_holder_beltcut() {
   belt_tooth_distance = 2.5;
   position_tweak = 1.85; //GT2 0.5
+  extra_sep = 0; //GT2 0.25
 
   // Belt slit
-  translate([-66,-0.5+10,3]) cube([67,1,15]);
+  translate([-66,-0.5-extra_sep+10,3]) cube([67,1+extra_sep,15]);
 
   // Smooth insert cutout
   translate([-66,-0.5+10,12]) rotate([45,0,0]) cube([67,15,15]);
