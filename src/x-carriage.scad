@@ -23,23 +23,24 @@ module x_carriage_base() {
 
 module x_carriage_beltcut() {
   belt_tooth_distance = 2.5;
-  position_tweak = belt_tooth_distance/2;
+  position_tweak = 1.85; //GT2 0.5
+  extra_sep = 0; //GT2 0.25
 
   // Cut in the middle for belt
-  translate([-2.5-16.25+position_tweak,18,7]) cube([4.5,13,15]);
+  translate([-2-16.5,18,7]) cube([4,13,15]);
 
   // Cut clearing space for the belt
   translate([-38,5,7]) cube([40,13,15]);
 
   // Belt slit
-  translate([-66,21.5+9,6]) cube([67,1,15]);
+  translate([-66,21.5+9-extra_sep,7]) cube([67,1+extra_sep,15]);
 
   // Smooth entrance
   translate([-66,21.5+9,14]) rotate([45,0,0]) cube([67,15,15]);
 
   // Teeth cuts
   for (i = [0 : 23]) {
-    translate([0-i*belt_tooth_distance+position_tweak,21.5+7,7]) cube([1.7,3,15]);
+    translate([0-i*belt_tooth_distance+position_tweak+8.5,21.5+7,7]) cube([belt_tooth_distance/2,3,15]);
   }
 }
 
