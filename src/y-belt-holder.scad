@@ -31,6 +31,11 @@ module belt_holder_beltcut() {
   translate([-2-25,-1,3]) cube([4,11,15]);
 }
 
+module belt_holder_fancy() {
+  translate([-33-8.5-4,0,-2]) rotate([0,0,-20]) cube([20,5,19]);
+  mirror([1,0,0]) translate([33-8.5-20,0,-2]) rotate([0,0,-20]) cube([20,5,19]);
+}
+
 module belt_holder_holes() {
   translate([-4.5,0,7.5]) rotate([-90,0,0]) cylinder(h = 30, r = 1.7, $fn = 10);
   translate([-45.5,0,7.5]) rotate([-90,0,0]) cylinder(h = 30, r = 1.7, $fn = 10);
@@ -39,9 +44,10 @@ module belt_holder_holes() {
 // Final part
 module belt_holder() {
   difference() {
-   belt_holder_base();
-   belt_holder_beltcut();
-   belt_holder_holes();
+    belt_holder_base();
+    belt_holder_beltcut();
+    belt_holder_fancy();
+    belt_holder_holes();
   }
 }
 
