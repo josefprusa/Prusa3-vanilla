@@ -5,6 +5,8 @@
 // http://www.reprap.org/wiki/Prusa_Mendel
 // http://prusamendel.org
 
+use <polyholes.scad>
+
 bearing_diameter = 15;
 
 module horizontal_bearing_base(bearings=1){
@@ -65,8 +67,9 @@ module vertical_bearing_base(){
 }
 
 module vertical_bearing_holes(){
-  translate(v=[0,0,-1]) cylinder(h = 62, r=bearing_diameter/2, $fn = 60);
-  rotate(a=[0,0,-70]) translate(v=[8,0,31.5]) cube(size = [5,1,62], center = true);
+  translate(v=[0,0,-1]) poly_cylinder(h = 62, r=bearing_diameter/2);
+  rotate(a=[0,0,-70]) translate(v=[bearing_diameter/2-1,-0.5,-1]) cube(size = [thinwall*2,1,62]);
+
 }
 
 difference(){
