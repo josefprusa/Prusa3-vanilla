@@ -27,7 +27,7 @@ module nozzlemount(){
 	translate([10-5,-25,0]) rotate([0,90,0]) rotate([0,0,30])cylinder(r=3.3, h=70,$fn=6);
 }
 
-motor_lenght = 35;
+motor_lenght = 48;
 
 
 // Calculated values
