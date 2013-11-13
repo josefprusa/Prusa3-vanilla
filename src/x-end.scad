@@ -6,6 +6,7 @@
 // http://prusamendel.org
 
 use <bearing.scad>
+use <polyholes.scad>
 rod_distance = 45;
 
 module x_end_base(){
@@ -46,7 +47,7 @@ translate(v=[-15,-41.5,6]) rotate(a=[-90,0,0]) pushfit_rod(8.1,50);
 // Top pushfit rod
 translate(v=[-15,-41.5,rod_distance+6]) rotate(a=[-90,0,0]) pushfit_rod(8.1,50);
 // Nut trap
- translate(v=[0,-17,-0.5]) cylinder(h = 4, r1=3.3, r2=2.8, $fn=25);
+ translate(v=[0,-17,-0.5]) poly_cylinder(h = 4, r=2.6, $fn=25);
  translate(v=[0,-17,3]) rotate([0,0,30]) cylinder(h = 10, r=4.5, $fn = 6);
 }
 
@@ -63,7 +64,7 @@ x_end_plain();
 
 
 module pushfit_rod(diameter,length){
- cylinder(h = length, r=diameter/2, $fn=30);
+ poly_cylinder(h = length, r=diameter/2);
  difference(){
  	translate(v=[0,-diameter/2.85,length/2]) rotate([0,0,45]) cube(size = [diameter/2,diameter/2,length], center = true);
  	translate(v=[0,-diameter/4-diameter/2-0.4,length/2]) rotate([0,0,0]) cube(size = [diameter,diameter/2,length], center = true);
