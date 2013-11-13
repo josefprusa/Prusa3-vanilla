@@ -12,7 +12,7 @@ module nozzlemount(){
 	// Tapered filament intake after the drive gear
 	translate([17,0,0]) rotate([0,90,0]) cylinder(r2=3,r1=2, h=10, $fn=30);
 
-	//translate([1,0,0]) rotate([0,90,0]) cylinder(r1=4, r2=2, h=3);
+	translate([1,0,0]) rotate([0,90,0]) cylinder(r=8, h=1);
 
 	// Front nozzle mount hole
 	translate([0,15,0]) rotate([0,90,0]) cylinder(r=2, h=70);
@@ -44,7 +44,7 @@ union(){
 	translate([0,-42,0]) cube([42,42+3,4]);
 
 	// Base plate (nozzle is secured to it)
-	translate([-7.99,-42,0]) cube([8,80,total_height]);
+	translate([-8.99,-42,0]) cube([9,80,total_height]);
 
 	// IDLER retainer
 	translate([-1,30,0]) cube([6, 7, total_height]);
