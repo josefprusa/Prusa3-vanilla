@@ -6,112 +6,149 @@
 // http://prusamendel.org
 
 module nozzlemount(){
-rotate([0,90,0]) cylinder(r=2, h=70, $fn=30);
-translate([17,0,0]) rotate([0,90,0]) cylinder(r2=3,r1=2, h=10, $fn=30);
-translate([1,0,0]) rotate([0,90,0]) cylinder(r1=4, r2=2, h=3);
-translate([0,15,0]) rotate([0,90,0]) cylinder(r=2, h=70);
-translate([10-5,15,0]) rotate([0,90,0]) rotate([0,0,30]) cylinder(r=3.3, h=70,$fn=6);
-translate([0,-25,0]) rotate([0,90,0]) cylinder(r=2, h=70);
-translate([10-5,-25,0]) rotate([0,90,0]) rotate([0,0,30])cylinder(r=3.3, h=70,$fn=6);
+	// Filament hole	
+	rotate([0,90,0]) cylinder(r=2, h=70, $fn=30);
+
+	// Tapered filament intake after the drive gear
+	translate([17,0,0]) rotate([0,90,0]) cylinder(r2=3,r1=2, h=10, $fn=30);
+
+	//translate([1,0,0]) rotate([0,90,0]) cylinder(r1=4, r2=2, h=3);
+
+	// Front nozzle mount hole
+	translate([0,15,0]) rotate([0,90,0]) cylinder(r=2, h=70);
+
+	// Front nozzle mount hole NUT TRAP
+	translate([10-5,15,0]) rotate([0,90,0]) rotate([0,0,30]) cylinder(r=3.3, h=70,$fn=6);
+
+	// Back nozzle mount hole
+	translate([0,-25,0]) rotate([0,90,0]) cylinder(r=2, h=70);
+
+	// Back nozzle mount hole NUT TRAP
+	translate([10-5,-25,0]) rotate([0,90,0]) rotate([0,0,30])cylinder(r=3.3, h=70,$fn=6);
 }
 
+motor_lenght = 48;
+
+
+// Calculated values
+
+	// Total height of the part is motor lenght plus front plate
+	total_height = motor_lenght + 4;
 
 difference(){
 union(){
-translate([0,-1,0])cube([42,19,52]);
-translate([0,-42,0]) cube([42,42+3,4]);
-translate([-7.99,-42,0]) cube([8,80,52]);
+	// Base where drive gear is placed
+	translate([0,-1,0])cube([42,19,total_height]);
 
-translate([-1,30,0]) cube([6, 7, 52]);
+	// Front plate (where motor mount is cutout)
+	translate([0,-42,0]) cube([42,42+3,4]);
 
+	// Base plate (nozzle is secured to it)
+	translate([-7.99,-42,0]) cube([8,80,total_height]);
 
-translate([-1,15,51]) cube([6, 20, 1]);
-translate([-1,15,22]) cube([6, 20, 2]);
+	// IDLER retainer
+	translate([-1,30,0]) cube([6, 7, total_height]);
 
+		// Top bridge holding idler retainer form springing
+		translate([-1,15,51]) cube([6, 20, 1]);
+
+		// Bottom bridge holding idler retainer form springing
+		translate([-1,15,22]) cube([6, 20, 2]);
 }
 
-//antiwarpagenation
+//Pretty corners
 
-translate([46,-91,-1])rotate([0,0,45])cube(40);
-translate([-11,-91,-1])rotate([0,0,45])cube([40,40,60]);
-translate([46,12,-1])rotate([0,0,45])cube([40,40,60]);
-translate([-32,12,-1])rotate([0,0,45])cube([40,40,60]);
-translate([6,31,-1])rotate([0,0,45])cube([40,40,60]);
+	// Cutaway corner base plate (motor side)
+	translate([-11,-91,-1])rotate([0,0,45])cube([40,40,60]);
+	// Cutaway corner base plate (idler side)
+	translate([-32,12,-1])rotate([0,0,45])cube([40,40,60]);
 
-// motor circle cut
+	// Cutaway corner base block (idler side)
+	translate([46,12,-1])rotate([0,0,45])cube([40,40,60]);
+
+	// Cutaway corner idler retainer
+	translate([6,31,-1])rotate([0,0,45])cube([40,40,60]);
+
+// Pretty cutouts
+	// Idler retainer pretty cuts
+	translate([-10,27,-2]) rotate([-23,0,0]) cube([20,12,50]);
+	translate([0,27,4]) rotate([0,23,0]) cube([20,12,50]);
+
+	// Base plate pretty cut
+	translate([-10,-66,-2]) rotate([-23,0,0]) cube([12,20,90]);
+
+// Motor mount
 translate([0,-1,0.5]){
-translate([21,-21,-1]) cylinder(r=12, h=5, $fn=90);
 
- translate([15,-45,-1]) cube([30,30,5]);
+	// Motor axis circle cut
+	translate([21,-21,-1]) cylinder(r=12, h=5, $fn=90);
 
-translate([21+15.5,-21+15.5,-1]) cylinder(r=2, h=5);
-translate([21+15.5,-21-15.5,-1]) cylinder(r=2, h=5);
-translate([21-15.5,-21+15.5,-1]) cylinder(r=2, h=5);
-translate([21-15.5,-21-15.5,-1]) cylinder(r=2, h=5);
+	// Material and warp saving cut
+	translate([15,-45,-1]) cube([30,30,5]);
+
+	// Motor screw holes
+	translate([21+15.5,-21+15.5,-1]) cylinder(r=2, h=5);
+	translate([21+15.5,-21-15.5,-1]) cylinder(r=2, h=5);
+	translate([21-15.5,-21+15.5,-1]) cylinder(r=2, h=5);
+	translate([21-15.5,-21-15.5,-1]) cylinder(r=2, h=5);
 }
 
 
+// Shaft cutouts
+	// Idler 608 bearing cutout
+	translate([21,24,33]) cylinder(r=12, h=17.5, $fn=90);
 
-// idler bearing cutout
+	// Main shaft cylinder cut
+	translate([21,8.1,7.5]) cylinder(r=6, h=43, $fn=50);
+	// Main shaft box cut
+	translate([-6+21,8,7.5]) cube([12,12,40]);
 
-translate([21,24,33]) cylinder(r=12, h=17.5, $fn=90);
+	// Entry main shaft cylinder cut
+	translate([21,8.1,-1]) cylinder(r=6, h=3, $fn=50);
+	// Entry main shaft box cut
+	translate([-6+21,8,-50+7]) cube([12,12,50]);
+
+	// Front axis bearing cylinder cut
+	translate([21,8.1,1]) cylinder(r=8.1, h=6, $fn=50);
+	// Front axis bearing box cut
+	translate([13,8,1]) cube([16.2,20,6]);
+
+	// Back axis bearing cylinder cut
+	translate([21,8.1,-5+52-4]) cylinder(r=8.1, h=7.5, $fn=50);
+	// Back axis bearing box cut
+	translate([13,8,43]) cube([16.2,20,7.5]);
 
 
 
-translate([21,8.1,7.5]) cylinder(r=6, h=43, $fn=50);
-
-translate([21,8.1,-1]) cylinder(r=6, h=3, $fn=50);
-// Second filament drive bearing
-translate([21,8.1,1]) cylinder(r=8.1, h=6, $fn=50);
-// Second filament drive bearing insert cutout
-
-translate([13,8,43]) cube([16.2,20,7.5]);
-
-
-translate([21,8.1,-5+52-4]) cylinder(r=8.1, h=7.5, $fn=50);
-translate([-6+21,8,7.5]) cube([12,12,40]);
-
-translate([-6+21,8,-50+7]) cube([12,12,50]);
-
-
-translate([13,8,1]) cube([16.2,20,6]);
-
-//mounting to carriage
+// X-carriage mounting holes
 translate([-5,20,-28]){
-translate([0,0,0])rotate([0,0,0])cylinder(r=3.3, h=70, $fn=15);
-translate([0,0-24,0])rotate([0,0,0])cylinder(r=3.3, h=70, $fn=15);
-translate([0,0,30])rotate([0,0,0])cylinder(r=3.3/2, h=70, $fn=15);
-translate([0,0-24,30])rotate([0,0,0])cylinder(r=3.3/2, h=70, $fn=15);
+	translate([0,0,0])rotate([0,0,0])cylinder(r=3.3, h=70, $fn=15);
+	translate([0,0-24,0])rotate([0,0,0])cylinder(r=3.3, h=70, $fn=15);
+	translate([0,0,30])rotate([0,0,0])cylinder(r=3.3/2, h=70, $fn=15);
+	translate([0,0-24,30])rotate([0,0,0])cylinder(r=3.3/2, h=70, $fn=15);
 }
 
-// idler nuts and filament channels
-
+// Idler nuts and filament channels
 translate([0,0,-2]){
-translate([-10,2+8+4,52-12]) nozzlemount();
-//translate([-10,2+8+4,52-12-25]) nozzlemount();
+	// Nozzle mounting holes
+	translate([-10,2+8+4,52-12]) nozzlemount();
+	// Front idler screw nut trap
+	translate([32.5,7,52-12-7-3]) cube([15,3,6]);
+	// Back idler screw nut trap
+	translate([32.5,7,52-12-7-3+14]) cube([15,3,6]);
 
-translate([32.5,7,52-12-7-3]) cube([15,3,6]);
-
-translate([32.5,7,52-12-7-3+14]) cube([15,3,6]);
-
-
-//translate([5+32,-1,52-12+7]) rotate([0,90,90]) rotate([0,0,30]) cylinder(r=3.3, h=10, $fn=6);
-//translate([5+32,-1,52-12-7]) rotate([0,90,90]) rotate([0,0,30]) cylinder(r=3.3, h=10, $fn=6);
-
-
-
-translate([5+32,-1,52-12+7]) rotate([0,90,90]) rotate([0,0,30]) cylinder(r=2, h=40, $fn=6);
-translate([5+32,-1,52-12-7]) rotate([0,90,90]) rotate([0,0,30]) cylinder(r=2, h=40, $fn=6);
-translate([5+31,-1,52-12+7]) rotate([0,90,90]) rotate([0,0,30]) cylinder(r=2, h=40, $fn=6);
-translate([5+31,-1,52-12-7]) rotate([0,90,90]) rotate([0,0,30]) cylinder(r=2, h=40, $fn=6);
+	// Back top idler screw hole
+	translate([5+32,-1,52-12+7]) rotate([0,90,90]) rotate([0,0,30]) cylinder(r=2, h=40, $fn=6);
+	// Back bottom idler screw hole
+	translate([5+32,-1,52-12-7]) rotate([0,90,90]) rotate([0,0,30]) cylinder(r=2, h=40, $fn=6);
+	// Front top idler screw hole
+	translate([5+31,-1,52-12+7]) rotate([0,90,90]) rotate([0,0,30]) cylinder(r=2, h=40, $fn=6);
+	// Front bottom idler screw hole
+	translate([5+31,-1,52-12-7]) rotate([0,90,90]) rotate([0,0,30]) cylinder(r=2, h=40, $fn=6);
 
 
-// pretty cutout
-translate([-10,27,0]) rotate([-23,0,0]) cube([20,12,50]);
-translate([0,27,6]) rotate([0,23,0]) cube([20,12,50]);
-
-// pretty cutout
-translate([-10,-66,0]) rotate([-23,0,0]) cube([12,20,90]);
 
 }
+
+
 }
