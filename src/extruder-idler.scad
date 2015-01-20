@@ -17,7 +17,7 @@ module extruder_idler_holes(){
   // Main cutout
   cube([11,23,25], center= true);
   // Idler shaft
-  translate([-12,0,4.1+2])rotate([0,90,0])cylinder(r=4.1, h=24);
+  #translate([-13.25,0,4.1+2])rotate([0,90,0])cylinder(r=4.1, h=24);
   // Screw holes
   //translate([7,-16,-1])cylinder(r=2.2, h=24);
   //translate([-7,-16,-1])cylinder(r=2.2, h=24);
@@ -39,3 +39,14 @@ module idler(){
 }
 
 idler();
+difference(){
+translate([0.25,11,-1]) cube([6.25,20,2]);
+translate([0.25,5,3.25])rotate([-45,0,0]) cube([6.25,20,2]);
+translate([0.25,30.5,-3.25])rotate([45,0,0]) cube([6.25,20,2]);
+}
+translate([17.25,0,0])
+difference(){
+translate([0.25,11,-1]) cube([6.75,20,2]);
+translate([0.25,5,3.25])rotate([-45,0,0]) cube([6.75,20,2]);
+translate([0.25,30.5,-3.25])rotate([45,0,0]) cube([6.75,20,2]);
+}
